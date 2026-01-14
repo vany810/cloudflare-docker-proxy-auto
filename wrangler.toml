@@ -2,25 +2,15 @@ name = "cloudflare-docker-proxy-auto"
 compatibility_date = "2026-01-01"
 main = "dist/main.js" 
 
-[dev]
-ip = "0.0.0.0"
-port = 8787
-local_protocol = "http"
-
+# 全局默认变量
 [vars]
 CUSTOM_DOMAIN = "tyjmirror.xyz"
 MODE = "proxy"
-
-[env.vars]
-CUSTOM_DOMAIN = "tyjmirror.xyz"
-
-[env.dev.vars]
-MODE = "debug"
 TARGET_UPSTREAM = "https://registry-1.docker.io"
-CUSTOM_DOMAIN = "tyjmirror.xyz"
 
 [env.production]
-name = "cloudflare-docker-proxy"
+# 这里的变量必须包含所有运行所需的 Key
+vars = { CUSTOM_DOMAIN = "tyjmirror.xyz", MODE = "proxy", TARGET_UPSTREAM = "https://registry-1.docker.io" }
 routes = [
   { pattern = "docker.tyjmirror.xyz", custom_domain = true },
   { pattern = "quay.tyjmirror.xyz", custom_domain = true },
@@ -30,14 +20,7 @@ routes = [
   { pattern = "ghcr.tyjmirror.xyz", custom_domain = true }
 ]
 
-[env.production.vars]
-MODE = "production"
-TARGET_UPSTREAM = ""
-
-[env.staging]
-name = "cloudflare-docker-proxy-staging"
-# route = { pattern = "docker-staging.libcuda.so", custom_domain = true }
-
-[env.staging.vars]
-MODE = "staging"
-TARGET_UPSTREAM = ""
+[dev]
+ip = "0.0.0.0"
+port = 8787
+local_protocol = "http"
