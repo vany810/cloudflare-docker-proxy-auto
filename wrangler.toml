@@ -1,5 +1,6 @@
 name = "cloudflare-docker-proxy-auto"
-compatibility_date = "2023-12-01"
+compatibility_date = "2026-01-01"
+main = "dist/main.js" 
 
 [dev]
 ip = "0.0.0.0"
@@ -7,24 +8,23 @@ port = 8787
 local_protocol = "http"
 
 [env.vars]
-CUSTOM_DOMAIN = "libcuda.so"
+CUSTOM_DOMAIN = "tyjmirror.xyz"
 
 [env.dev.vars]
 MODE = "debug"
 TARGET_UPSTREAM = "https://registry-1.docker.io"
-CUSTOM_DOMAIN = "exmaple.com"
+CUSTOM_DOMAIN = "tyjmirror.xyz"
 
 [env.production]
 name = "cloudflare-docker-proxy"
-# routes = [
-#   { pattern = "docker.libcuda.so", custom_domain = true },
-#   { pattern = "quay.libcuda.so", custom_domain = true },
-#   { pattern = "gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s-gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s.libcuda.so", custom_domain = true },
-#   { pattern = "ghcr.libcuda.so", custom_domain = true },
-#   { pattern = "cloudsmith.libcuda.so", custom_domain = true },
-# ]
+routes = [
+  { pattern = "docker.tyjmirror.xyz", custom_domain = true },
+  { pattern = "quay.tyjmirror.xyz", custom_domain = true },
+  { pattern = "gcr.tyjmirror.xyz", custom_domain = true },
+  { pattern = "k8s-gcr.tyjmirror.xyz", custom_domain = true },
+  { pattern = "k8s.tyjmirror.xyz", custom_domain = true },
+  { pattern = "ghcr.tyjmirror.xyz", custom_domain = true }
+]
 
 [env.production.vars]
 MODE = "production"
