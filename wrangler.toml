@@ -9,6 +9,7 @@ MODE = "proxy"
 TARGET_UPSTREAM = "https://registry-1.docker.io"
 
 [env.production]
+name = "cloudflare-docker-proxy-auto"
 # 这里的变量必须包含所有运行所需的 Key
 vars = { CUSTOM_DOMAIN = "tyjmirror.xyz", MODE = "proxy", TARGET_UPSTREAM = "https://registry-1.docker.io" }
 routes = [
